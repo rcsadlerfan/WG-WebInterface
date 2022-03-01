@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WireGuard</title>
+    <%- include('partials/links') %>
+</head>
+<body>
+    <div class="flex h-screen">
+        <div class="flex-none h-full p-5 bg-gray-200 text-center space-y-10">
+            <h1 class="text-3xl font-semibold">WireGuard Peer Manager</h1>
+            <div class="space-y-3">
+                <% for (var i in config.interface) { %>
+                    <p><%= i %>: <%= config.interface[i] %></p>
+                <% } %>
+            </div>
+        </div>
+        <div class="flex-auto h-full p-5 space-y-5">
+            <h1 class="text-2xl">Peers</h1>
+            <div class="grid grid-cols-3 gap-5">
+                <% for (var i in config.peers) { %>
+                    <a class="border border-gray-500 rounded-lg p-3 hover:border-red-500 transition ease-in-out duration-150 cursor-pointer">
+                        <h2 class="text-xl font-semibold"><%= i %></h2>
+                        <p class="italic">IP: <%= config.peers[i].AllowedIPs %></p>
+                    </a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
